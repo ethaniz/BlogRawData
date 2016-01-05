@@ -1,30 +1,30 @@
 Title: Python super()函数研究
 Date: 2015-2-19 20:58
-Tags: Python
-Slug: python_super
+Modified: 2015-2-19
+Tags: super
 Authur: 转载
 
 
-在《Learn Python The Hard Way》一书中看到super()的用法，在网上查了下，发现还挺有意思。 
+在《Learn Python The Hard Way》一书中看到super()的用法，在网上查了下，发现还挺有意思。
 ###1.问题的发现与提出
 在Python类的方法（method）中，要调用父类的某个方法，在Python 2.2以前，通常的写法如下代码：
 
 ```python
-class A: 
-	def __init__(self): 
-		print "enter A" 
-		print "leave A" 
-	
-class B(A): 
-	def __init__(self): 
-		print "enter B" 
-		A.__init__(self) 
-		print "leave B" 
-		
+class A:
+	def __init__(self):
+		print "enter A"
+		print "leave A"
+
+class B(A):
+	def __init__(self):
+		print "enter B"
+		A.__init__(self)
+		print "leave B"
+
 >>> b = B()
-enter B 
-enter A 
-leave A 
+enter B
+enter A
+leave A
 leave B
 ```
 
@@ -45,27 +45,27 @@ class B(C):              # A --> C
 因此，自Python 2.2开始，Python添加了一个关键字super，来解决这个问题。下面是Python 2.3的官方文档说明：
 >  super(type[, object-or-type])
   Return the superclass of type. If the second argument is omitted the super object
-  returned is unbound. If the second argument is an object, isinstance(obj, type) 
-  must be true. If the second argument is a type, issubclass(type2, type) must be 
+  returned is unbound. If the second argument is an object, isinstance(obj, type)
+  must be true. If the second argument is a type, issubclass(type2, type) must be
   true. super() only works for new-style classes.
   A typical use for calling a cooperative superclass method is:
    class C(B):
        def meth(self, arg):
            super(C, self).meth(arg)
   New in version 2.2.
-  
+
 从说明来看，可以把类B改写如下代码段：
 
 ```python
-class A(object): # A must be new-style class 
-	def __init__(self): 
-		print "enter A" 
-		print "leave A" 
-		
-class B(C): # A --> C 
-	def __init__(self): 
-		print "enter B" 
-		super(B, self).__init__() 
+class A(object): # A must be new-style class
+	def __init__(self):
+		print "enter A"
+		print "leave A"
+
+class B(C): # A --> C
+	def __init__(self):
+		print "enter B"
+		super(B, self).__init__()
 		print "leave B"
 ```
 尝试执行上面同样的代码，结果一致，但修改的代码只有一处，把代码的维护量降到最低，是一个不错的用法。因此在我们的开发过程中，super关键字被大量使用，而且一直表现良好。
@@ -95,7 +95,7 @@ class D(A):
    		print "enter D"
    		super(D, self).__init__()
    		print "leave D"
- 
+
 class E(B, C):
 	def __init__(self):
    		print "enter E"
@@ -121,8 +121,8 @@ class F(E, D):
     \   /   |
       E     |
         \   |
-          F          
-```   		
+          F
+```
 按我们对super的理解，从图中可以看出，在调用类C的初始化函数时，应该是调用类A的初始化函数，但事实上却调用了类D的初始化函数。好一个诡异的问题！
 也就是说，mro中记录了一个类的所有基类的类类型序列。查看mro的记录，发觉包含7个元素，7个类名分别为：
  F E B C D A object
@@ -153,7 +153,7 @@ class D(A):
    		print "enter D"
    		super(D, self).__init__()
    		print "leave D"
- 
+
 class E(B, C):
 	def __init__(self):
    		print "enter E"

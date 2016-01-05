@@ -1,7 +1,6 @@
 Title: MAC OS X中解决 socket.error:[Errno 48]Address already in use 端口占用问题
 Date: 2015-2-17 21:06
-Tags: pelican
-Slug: pelican_socket
+Tags: Pelican
 Authur: Ethaniz
 
 ###

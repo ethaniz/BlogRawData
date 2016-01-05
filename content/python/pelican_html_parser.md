@@ -1,8 +1,7 @@
 Title: Error of Pelican on Mac - No module named html_parser
 Date: 2015-2-17 22:03
 Modified: 2015-2-17
-Tags: pelican
-Slug: pelican_html_parser
+Tags: Pelican
 Authur: Ethaniz
 
 

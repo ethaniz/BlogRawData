@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
+from collections import OrderedDict
+
 
 AUTHOR = u'Ethaniz'
 SITENAME = u'异尘余生'
@@ -69,6 +71,10 @@ DISQUS_ID_PREFIX_SLUG = True
 GITHUB_USER = 'Ethaniz'
 GITHUB_REPO_COUNT = 5
 
+SITESUBTITLE = r'1234'
+
+
+
 # niu-x2 theme config
 NIUX2_AUTHOR_TRANSL = '作者'
 NIUX2_404_TITLE_TRANSL = '404错误 页面未找到!'
@@ -113,20 +119,20 @@ NIUX2_CATEGORY_MAP = {
 }
 
 NIUX2_HEADER_SECTIONS = [
-    ('关于', 'about me', '/about.html', 'fa-anchor'),
-    ('项目', 'my projects', '/my_projects.html', 'fa-rocket'),
+    ('关于', 'about me', 'https://github.com/ethaniz', 'fa-anchor'),
+    #('项目', 'my projects', '/my_projects.html', 'fa-rocket'),
     #('标签', 'tags', '/tags/', 'fa-tag'),
     ('标签', 'tags', '/tags.html', 'fa-tag'),
 ]
 
-#NIUX2_HEADER_DROPDOWN_SECTIONS = OrderedDict()
-#NIUX2_HEADER_DROPDOWN_SECTIONS[('存档', 'fa-archive')] = [
-#    ('存档 (按发布时间)', 'archives order by publish time', '/archives.html', 'fa-calendar'),
+NIUX2_HEADER_DROPDOWN_SECTIONS = OrderedDict()
+NIUX2_HEADER_DROPDOWN_SECTIONS[('存档', 'fa-archive')] = [
+    ('存档 (按发布时间)', 'archives order by publish time', '/archives.html', 'fa-calendar'),
 #    ('存档 (按修改时间)', 'archives order by modify time', '/archives_updatedate.html', 'fa-pencil'),
-#]
+]
 
 NIUX2_FOOTER_LINKS = [
-    ('关于', 'about me', '/about.html', ''),
+    ('关于', 'about me', 'https://github.com/ethaniz', ''),
 ]
 
 NIUX2_FOOTER_ICONS = [

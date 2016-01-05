@@ -1,4 +1,4 @@
-Title: git push -- matching or simple
+Title: Git push -- matching or simple
 Date: 2015-6-15 16:38:00
 Modified: 2015-6-15
 Tags: git
